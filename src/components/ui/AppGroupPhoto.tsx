@@ -3,23 +3,24 @@ import Link from "next/link";
 
 const AppGroupPhoto = ({ images }: { images: { url: string }[] }) => {
   return (
-    <div className="flex -space-x-3 rtl:space-x-reverse">
+    <div className="flex -space-x-2.5 rtl:space-x-reverse">
       {images.map((img, i) => (
-        <Image
-          key={i}
-          className="max-2xl:size-[22px]"
-          src={img.url}
-          alt="banner image"
-          width={22}
-          height={22}
-        />
+        <div key={i} className="w-[22px]">
+          <Image
+            className="size-[22px] rounded-full"
+            src={img.url}
+            alt="banner image"
+            width={22}
+            height={22}
+          />
+        </div>
       ))}
 
       <Link
-        className="flex items-center justify-center text-center max-2xl:size-10 2xl:size-[22px] text-xs font-medium text-white bg-dark rounded-full hover:bg-dark/90"
+        className="flex items-center justify-center text-center size-10 2xl:size-[22px] text-xs font-medium text-white bg-dark rounded-full hover:bg-dark/90"
         href="#"
       >
-        +9
+        +{images.length}
       </Link>
     </div>
   );

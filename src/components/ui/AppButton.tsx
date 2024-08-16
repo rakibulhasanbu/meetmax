@@ -34,13 +34,9 @@ const AppButton = ({
     <Link key={label} href={href} className="block min-w-fit">
       <button
         className={cn(
-          "text-sm md:text-base lg:text-lg xl:text-xl font-light min-w-fit rounded-xl md:rounded-2xl",
+          "text-sm md:text-base min-w-fit rounded-md md:rounded-lg",
           icon && "flex items-center gap-1 md:gap-2",
-          variant === "filled"
-            ? "btnFilled"
-            : variant === "outlined"
-            ? "btnOutlined"
-            : "btnNoDesign",
+          variant === "filled" ? "" : "",
           className
         )}
         type={type}
@@ -54,13 +50,9 @@ const AppButton = ({
       key={label}
       disabled={disabled}
       className={cn(
-        "text-sm md:text-base lg:text-lg xl:text-xl font-light min-w-fit rounded-xl md:rounded-2xl",
+        "text-sm md:text-base min-w-fit rounded-md md:rounded-lg",
         icon && "flex items-center gap-1 md:gap-2",
-        variant === "filled"
-          ? "btnFilled"
-          : variant === "outlined"
-          ? "btnOutlined"
-          : "btnNoDesign",
+        variant === "filled" ? "" : "",
         className
       )}
       type={"button"}
@@ -75,13 +67,11 @@ const AppButton = ({
       key={label}
       disabled={disabled}
       className={cn(
-        "text-sm md:text-base lg:text-lg xl:text-xl font-light min-w-fit rounded-xl md:rounded-2xl",
+        "text-sm md:text-lg py-2 w-full rounded-md md:rounded-lg",
         icon && "flex items-center gap-1 md:gap-2",
         variant === "filled"
-          ? "btnFilled"
-          : variant === "outlined"
-          ? "btnOutlined"
-          : "btnNoDesign",
+          ? "bg-primary hover:bg-[#3074f4] text-white"
+          : "border border-primary/20 text-primary hover:bg-primary/20",
         className
       )}
       type={type}

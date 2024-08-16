@@ -1,7 +1,4 @@
 import { BsThreeDots } from "react-icons/bs";
-import AppUser from "../ui/AppUser";
-import Image from "next/image";
-import AppGroupPhoto from "../ui/AppGroupPhoto";
 import {
   RiFileGifLine,
   RiHeart2Fill,
@@ -13,23 +10,29 @@ import { FaRegCommentDots } from "react-icons/fa6";
 import { VscSend } from "react-icons/vsc";
 import { IoImageOutline } from "react-icons/io5";
 import ImageGallery from "./ImageGallery";
+import AppUser from "@/components/ui/AppUser";
+import AppGroupPhoto from "@/components/ui/AppGroupPhoto";
 
 type TPost = {
-  comments: number;
-  share: number;
-  description: string;
-  user: {
-    name: string;
-    profileImg: string;
-    role: string;
+  post: {
+    comments: number;
+    share: number;
+    description: string;
+    user: {
+      name: string;
+      profileImg: string;
+      role: string;
+    };
+    createdAt: string;
+    images: {
+      url: string;
+    }[];
   };
-  createdAt: string;
-  images: {
-    url: string;
-  }[];
 };
 
-const Post = ({ user, images, description, comments, share }: TPost) => {
+const Post = ({
+  post: { user, images, description, comments, share },
+}: TPost) => {
   return (
     <div className="p-[18px] rounded-2xl">
       <div className="flex items-center justify-between">
@@ -113,7 +116,7 @@ const Post = ({ user, images, description, comments, share }: TPost) => {
           </button>
         </div>
 
-        <button className="size-[38px] flex items-center justify-center rounded bg-primary/80 text-primary">
+        <button className="size-[38px] flex items-center justify-center rounded bg-primary/10 text-primary">
           <VscSend />
         </button>
       </div>

@@ -18,9 +18,6 @@
   .btnOutlined {
     @apply text-primary px-4 py-1 md:py-2  rounded md:rounded-xl border border-primary hover:bg-primary hover:border-primary hover:text-white transition-all;
   }
-  .btnNoDesign {
-    @apply text-white/80 px-4 py-1 md:py-2 hover:text-white  transition-all;
-  }
   .input-box {
     @apply w-[100%] rounded-lg outline-none py-2 md:py-3 2xl:py-4 bg-dark/10 pl-10 border border-dark/20 placeholder:text-dark/60  placeholder:font-medium;
   }
