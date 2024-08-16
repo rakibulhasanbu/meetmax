@@ -6,7 +6,8 @@ type TAppInput = {
   name?: string;
   type: "password" | "number" | "text" | "date" | "url" | "file" | "email";
   placeholder: string;
-  icon?: string;
+  icon?: any;
+  className?: string;
   disabled?: boolean;
   error?: any;
   value?: any;
@@ -22,11 +23,14 @@ const AppInput = ({
   setValue,
   disabled,
   value,
+  className,
 }: TAppInput) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   return (
-    <div className={`relative w-[100%] ${error ? "mb-1" : "mb-4"}`}>
+    <div
+      className={`relative w-[100%] ${error ? "mb-1" : "mb-4"} ${className}`}
+    >
       <input
         defaultValue={value}
         onChange={setValue}
@@ -37,7 +41,7 @@ const AppInput = ({
         placeholder={placeholder}
         className={`input-box ${!icon && "pl-4"} ${error && "border-red"}`}
       />
-      <i className={`fi ${icon} input-icon ${error && "top-1/4"}`}></i>
+      <span className={`input-icon ${error && "text-red"}`}>{icon}</span>
 
       {type === "password" ? (
         <i

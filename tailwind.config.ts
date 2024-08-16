@@ -29,6 +29,12 @@ const config: Config = {
       transparent: "transparent",
     },
     extend: {
+      borderRadius: {
+        "10": "10px",
+      },
+      padding: {
+        "18": "18px",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

@@ -15,7 +15,7 @@ import {
 } from "redux-persist";
 
 const persistConfig = {
-  key: "auth",
+  key: "meetMaxAuth",
   storage,
 };
 

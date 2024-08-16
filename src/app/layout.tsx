@@ -23,13 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
-        {" "}
-        <Providers>
-          <Navbar />
-          <div className="h-[calc(100dvh-78px)] overflow-x-hidden overflow-y-auto">
-            {children}
-          </div>
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
