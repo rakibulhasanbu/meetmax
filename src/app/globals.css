@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .center {
+    @apply flex items-center justify-center text-center;
+  }
+  .d-center {
+    @apply block mx-auto;
+  }
+  .heading {
+    @apply text-primary text-3xl md:text-4xl 2xl:text-[45px] leading-[50px] 2xl:leading-[68px];
+  }
+  .btnFilled {
+    @apply border border-primary bg-primary text-white px-4 py-1 md:py-2  rounded md:rounded-xl hover:bg-primary/95 transition-all;
+  }
+  .btnOutlined {
+    @apply text-primary px-4 py-1 md:py-2  rounded md:rounded-xl border border-primary hover:bg-primary hover:border-primary hover:text-white transition-all;
+  }
+  .btnNoDesign {
+    @apply text-white/80 px-4 py-1 md:py-2 hover:text-white  transition-all;
+  }
+  .input-box {
+    @apply w-[100%] rounded-lg outline-none py-2 md:py-3 2xl:py-4 bg-dark/10 pl-10 border border-dark/20 placeholder:text-dark/60  placeholder:font-medium;
+  }
+
+  input:disabled,
+  input:disabled ~ .input-icon {
+    @apply opacity-50;
+  }
+
+  .input-icon {
+    @apply absolute left-4 top-1/2 -translate-y-1/2 text-dark-grey md:text-lg;
+  }
+}
+
+body {
+  @apply bg-white text-dark overflow-x-hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: #e5e5e5cd;
+  box-shadow: inset 0 0 3px #cccccc;
+  border-radius: 4px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #4e5d7833;
+  border-radius: 5px;
+  cursor: grabbing;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #bdbdbd;
+}
+
+@media only screen and (max-width: 600px) {
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+}
