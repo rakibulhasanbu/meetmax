@@ -3,7 +3,7 @@ import { VscSend } from "react-icons/vsc";
 
 const BirthDayCard = () => {
   return (
-    <div className="bg-white rounded-2xl">
+    <div className="bg-white rounded-xl">
       <h3 className="flex items-center justify-between px-5 py-3 border-b border-b-dark/20">
         <span className="font-semibold">Birthdays</span>
         <span className="text-primary cursor-pointer text-sm font-medium">
@@ -32,7 +32,7 @@ const BirthDayCard = () => {
           <input
             type="text"
             placeholder="Write on his inbox"
-            className="bg-dark/5 rounded-lg w-full px-4 py-2 outline-none"
+            className="bg-dark/5 rounded-md w-11/12 px-4 py-2 outline-none"
           />
           <button className="size-[38px] flex items-center justify-center rounded bg-primary/10 text-primary">
             <VscSend />

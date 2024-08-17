@@ -12,10 +12,10 @@ const page = () => {
 
       <div className="col-start-2 overflow-y-auto rounded-t-2xl">
         <div className="bg-dark/5 min-h-screen flex gap-8 pt-8 px-8">
-          <div className="w-[60%]">
+          <div className="w-[62%]">
             <MainFeed />
           </div>
-          <div className="w-[40%]">
+          <div className="w-[38%]">
             <FeedRightEvents />
           </div>
         </div>

@@ -34,15 +34,17 @@ const AppUser = ({
         src={user.profileImg}
         className={cn(
           "aspect-square rounded-full object-cover",
-          size === "lg" && "size-8  md:size-[50px]",
-          size === "md" && "size-8  md:size-[40px]"
+          size === "lg" && "size-8  md:size-[50px] md:min-w-[50px]",
+          size === "md" && "size-8  md:size-[40px] md:min-w-[40px]"
         )}
       />
       {!onlyImage && (
         <div className="">
           <h3 className="font-medium">{user.name}</h3>
           {!onlyName && (
-            <p className="text-dark/60">{createdAt ? createdAt : user.role}</p>
+            <p className="text-dark/60 text-sm">
+              {createdAt ? createdAt : user.role}
+            </p>
           )}
         </div>
       )}

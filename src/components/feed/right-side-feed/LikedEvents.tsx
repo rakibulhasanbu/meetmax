@@ -12,7 +12,7 @@ const LikedEvents = () => {
     profileImg: "https://randomuser.me/api/portraits/men/19.jpg",
   };
   return (
-    <div className="bg-white rounded-2xl">
+    <div className="bg-white rounded-xl">
       <h3 className="flex items-center justify-between px-5 py-3 border-b border-b-dark/20">
         <span className="font-semibold">You Might Like</span>
         <span className="text-primary cursor-pointer text-sm font-medium">

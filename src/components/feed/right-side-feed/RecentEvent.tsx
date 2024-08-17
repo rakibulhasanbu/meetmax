@@ -42,7 +42,7 @@ const RecentEvent = () => {
     },
   ];
   return (
-    <div className="bg-white rounded-2xl">
+    <div className="bg-white rounded-xl">
       <h3 className="flex items-center justify-between px-5 py-3 border-b border-b-dark/20">
         <span className="font-semibold">Recent Event</span>
         <BsThreeDots className="text-2xl cursor-pointer" />
@@ -51,7 +51,7 @@ const RecentEvent = () => {
         {events.map((event, i) => (
           <AnimationWrapper
             key={i}
-            transition={{ duration: i * 0.08 }}
+            transition={{ delay: i * 0.08 }}
             className="bg-dark/5 p-3 rounded-xl"
           >
             <div className="flex gap-5">
