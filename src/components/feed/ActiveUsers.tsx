@@ -29,10 +29,10 @@ const ActiveUsers = () => {
   }, []);
 
   return (
-    <div className="py-[30px] w-full relative overflow-hidden">
+    <div className="max-sm:bg-white max-sm:px-5 max-sm:py-4 md:py-[30px] w-full relative overflow-hidden">
       <motion.div
         ref={containerRef}
-        className="flex gap-5 hide-scrollbar"
+        className="flex gap-2.5 md:gap-5 hide-scrollbar"
         drag="x"
         // dragConstraints={{ left: -300, right: 0 }}
         dragConstraints={{ left: -(contentWidth - containerWidth), right: 0 }}

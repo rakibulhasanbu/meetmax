@@ -31,7 +31,7 @@ const CreatePost = () => {
 
   return (
     <div>
-      <div className="bg-white p-5 space-y-5 rounded-xl">
+      <div className="bg-white p-3 md:p-5 space-y-3 md:space-y-5 rounded-xl">
         <div className="flex items-center gap-4 pt-3">
           <AppUser size="md" onlyImage user={user} />
 
@@ -44,16 +44,16 @@ const CreatePost = () => {
         </div>
 
         <div className="flex items-center justify-between">
-          <button className="flex font-medium items-center gap-2 min-w-fit">
-            <LuVideo className="text-xl" />
+          <button className="max-sm:text-sm flex font-medium items-center gap-1 md:gap-2 min-w-fit">
+            <LuVideo className="text-sm md:text-xl" />
             Live Video
           </button>
-          <button className="flex font-medium items-center gap-2 min-w-fit">
-            <IoImageOutline className="text-xl" />
+          <button className="max-sm:text-sm flex font-medium items-center gap-1 md:gap-2 min-w-fit">
+            <IoImageOutline className="text-sm md:text-xl" />
             Photo/Video
           </button>
-          <button className="flex font-medium items-center gap-2 min-w-fit">
-            <RiUserSmileLine className="text-xl" />
+          <button className="max-sm:text-sm flex font-medium items-center gap-1 md:gap-2 min-w-fit">
+            <RiUserSmileLine className="text-sm md:text-xl" />
             Feeling
           </button>
           <AppButton

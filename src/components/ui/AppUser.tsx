@@ -58,7 +58,7 @@ const AppUser = ({
           alt="avatar"
           src={user.profileImg}
           className={
-            "aspect-square rounded-full pointer-events-none border-2 border-primary object-cover size-8  md:size-[50px]"
+            "aspect-square rounded-full pointer-events-none border-2 border-primary object-cover size-9  md:size-[50px]"
           }
         />
         {myProfile && (
@@ -69,7 +69,9 @@ const AppUser = ({
       </div>
       {!onlyImage && (
         <div className="">
-          <h3 className="font-medium text-center">{user.name.split(" ")[0]}</h3>
+          <h3 className="font-medium max-sm:text-xs md:text-center">
+            {user.name.split(" ")[0]}
+          </h3>
           {!onlyName && (
             <p className="text-dark/60">{createdAt ? createdAt : user.role}</p>
           )}

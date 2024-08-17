@@ -17,7 +17,7 @@ const AppGroupPhoto = ({ images }: { images: { url: string }[] }) => {
       ))}
 
       <Link
-        className="flex items-center justify-center text-center size-10 2xl:size-[22px] text-xs font-medium text-white bg-dark rounded-full hover:bg-dark/90"
+        className="flex items-center justify-center text-center size-[22px] text-xs font-medium text-white bg-dark rounded-full hover:bg-dark/90"
         href="#"
       >
         +{images.length}

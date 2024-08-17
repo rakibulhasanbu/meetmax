@@ -6,7 +6,7 @@ type TAppSearchInput = {
 
 const AppSearchInput = ({ placeholder }: TAppSearchInput) => {
   return (
-    <div className="flex py-2.5 items-center px-4 border placeholder:text-dark/80 border-dark/40 rounded-10 w-full">
+    <div className="flex py-1.5 md:py-2.5 items-center px-4 border placeholder:text-dark/80 border-dark/40 rounded-md md:rounded-10 w-full">
       <IoSearch className="text-xl" />
       <input
         type="text"
