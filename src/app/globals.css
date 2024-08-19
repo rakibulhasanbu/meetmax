@@ -19,7 +19,7 @@
     @apply text-primary px-4 py-1 md:py-2  rounded md:rounded-xl border border-primary hover:bg-primary hover:border-primary hover:text-white transition-all;
   }
   .input-box {
-    @apply w-[100%] rounded-lg outline-none py-2 md:py-3 2xl:py-4 bg-dark/10 pl-10 border border-dark/20 placeholder:text-dark/60  placeholder:font-medium;
+    @apply w-[100%] rounded-lg outline-none py-2 md:py-3 2xl:py-3.5 bg-white pl-10 border border-dark/20 placeholder:text-dark/60 max-sm:placeholder:text-sm placeholder:font-medium;
   }
 
   input:disabled,
@@ -28,8 +28,19 @@
   }
 
   .input-icon {
-    @apply absolute left-4 top-1/2 -translate-y-1/2 text-dark-grey md:text-lg;
+    @apply absolute left-4 top-1/2 -translate-y-1/2 md:text-lg;
   }
+}
+.app-shadow {
+  box-shadow: 3px -5px 35px 0px #cdcdd41a;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
 }
 
 body {

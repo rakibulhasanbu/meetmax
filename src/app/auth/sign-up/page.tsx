@@ -6,10 +6,8 @@ const page = () => {
   return (
     <AnimationWrapper>
       <AuthWrapper
-        src="/image/sign-up.png"
-        title="Sign Up"
-        subTitle="Enter your information and get access to
-      social media outreach. "
+        title="Getting Started"
+        subTitle="Create an account to continue and connect with the people. "
       >
         <SignUpForm />
       </AuthWrapper>

@@ -70,7 +70,7 @@ const CreatePost = () => {
             <span className="font-bold">Create a post</span>
             <div className="flex items-center gap-7">
               <span className="font-semibold text-dark/70">Visible for</span>
-              <AppDropDown data={dropdownData} />
+              <AppDropDown color="blue" data={dropdownData} />
               <RxCrossCircled
                 className="text-2xl cursor-pointer"
                 onClick={handleCloseModal}

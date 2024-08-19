@@ -5,12 +5,7 @@ import AnimationWrapper from "@/components/ui/AnimationWrapper";
 const page = () => {
   return (
     <AnimationWrapper>
-      <AuthWrapper
-        src="/image/sign-in.png"
-        title="Log in"
-        subTitle="Log in with your details and continue your
-      social media presence."
-      >
+      <AuthWrapper title="Sign In" subTitle="Welcome back, you’ve been missed!">
         <SignInForm />
       </AuthWrapper>
     </AnimationWrapper>

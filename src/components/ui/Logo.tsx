@@ -17,7 +17,7 @@ const Logo = ({
   return isLink ? (
     <Link
       href={"/"}
-      className={`flex gap-2.5 items-center select-none ${parentClassName}`}
+      className={`flex gap-1 md:gap-2.5 items-center select-none ${parentClassName}`}
     >
       <Image
         src={"/images/logo.png"}
@@ -25,13 +25,17 @@ const Logo = ({
         width={28}
         height={28}
         className={`object-cover ${
-          variant === "md" ? "max-sm:w-7" : variant === "sm" ? "max-sm:w-5" : ""
+          variant === "md"
+            ? "max-sm:w-7"
+            : variant === "sm"
+            ? "max-sm:w-5"
+            : "max-sm:w-5"
         } ${imageClassName}`}
       />
       <h2
-        className={`text-3xl font-bold  ${
+        className={`text-lg md:text-3xl font-bold  ${
           variant === "md"
-            ? "max-sm:text-2xl"
+            ? "max-sm:text-2xl text-2xl"
             : variant === "sm"
             ? "max-sm:text-base"
             : ""

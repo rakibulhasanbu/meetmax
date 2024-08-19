@@ -6,10 +6,8 @@ const page = () => {
   return (
     <AnimationWrapper>
       <AuthWrapper
-        src="/image/forgot-password.png"
-        title="Forgot password"
-        subTitle="Enter your e-mail, we will send a code to your email
-to reset your password."
+        title="Forgot password?"
+        subTitle="Enter your details to receive a rest link "
       >
         <ForgotPassword />
       </AuthWrapper>

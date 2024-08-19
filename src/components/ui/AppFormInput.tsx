@@ -8,7 +8,6 @@ type TAppFormInput = {
   name: string;
   type: "password" | "number" | "text" | "date" | "url" | "file" | "email";
   placeholder: string;
-  label: string;
   className?: string;
   icon?: any;
   register: UseFormRegister<any>;
@@ -27,15 +26,11 @@ const AppFormInput = ({
   error,
   disabled,
   className,
-  label,
 }: TAppFormInput) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   return (
     <div className={`w-[100%] ${error ? "mb-1" : "2xl:mb-4"}`}>
-      <label className="text-lg font-light pb-2 text-dark-grey" htmlFor={name}>
-        {label}
-      </label>
       <div className="relative">
         <input
           {...register(name, {
@@ -70,7 +65,7 @@ const AppFormInput = ({
       </div>
       {error && (
         <p className="text-sm text-red my-1">
-          <span className="capitalize text-sm">{label}</span> is required.
+          <span className="capitalize text-sm">{name}</span> is required.
         </p>
       )}
     </div>
