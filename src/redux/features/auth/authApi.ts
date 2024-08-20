@@ -44,6 +44,13 @@ const authApi = baseApi.injectEndpoints({
         body: userInfo,
       }),
     }),
+    googleAuthRegister: builder.mutation({
+      query: (userInfo) => ({
+        url: "/auth/google-auth",
+        method: "POST",
+        body: userInfo,
+      }),
+    }),
   }),
 });
 
@@ -54,4 +61,5 @@ export const {
   useNewPasswordMutation,
   useResendEmailMutation,
   useForgotPasswordMutation,
+  useGoogleAuthRegisterMutation,
 } = authApi;

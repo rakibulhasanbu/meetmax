@@ -11,10 +11,8 @@ import {
 
 const PrivateLayout = ({
   children,
-  roles,
 }: Readonly<{
   children: React.ReactNode;
-  roles?: string[];
 }>) => {
   const pathname = usePathname();
   const router = useRouter();
@@ -27,7 +25,7 @@ const PrivateLayout = ({
       const redirectTo = `/auth/sign-in?from=${encodeURIComponent(pathname)}`;
       router.push(redirectTo);
     }
-  }, [user, roles, accessToken, pathname, router, dispatch]);
+  }, [user, accessToken, pathname, router, dispatch]);
 
   // If user doesn't have access or is being redirected, don't render children
   if (!accessToken) {
