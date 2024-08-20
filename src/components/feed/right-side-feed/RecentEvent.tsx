@@ -12,13 +12,13 @@ const RecentEvent = () => {
       seen: 8,
       users: [
         {
-          url: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+          url: "https://randomuser.me/api/portraits/men/14.jpg",
         },
         {
-          url: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+          url: "https://randomuser.me/api/portraits/men/17.jpg",
         },
         {
-          url: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+          url: "https://randomuser.me/api/portraits/men/12.jpg",
         },
       ],
     },
@@ -30,13 +30,13 @@ const RecentEvent = () => {
       seen: 11,
       users: [
         {
-          url: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+          url: "https://randomuser.me/api/portraits/men/18.jpg",
         },
         {
-          url: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+          url: "https://randomuser.me/api/portraits/men/19.jpg",
         },
         {
-          url: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+          url: "https://randomuser.me/api/portraits/women/20.jpg",
         },
       ],
     },

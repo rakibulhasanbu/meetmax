@@ -11,13 +11,14 @@ export interface TPost {
     name: string;
     image: string;
   };
-  slug?: string;
   description: string;
   images: { url: string }[];
   isPublish?: boolean;
   liked?: number;
   comments?: any;
+  share: number;
   visibleBy?: "Friends" | "Public";
+  createdAt: string;
 }
 
 export const USER_ROLE = {

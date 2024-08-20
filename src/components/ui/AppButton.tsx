@@ -50,7 +50,7 @@ const AppButton = ({
       key={label}
       disabled={disabled}
       className={cn(
-        "text-sm md:text-base min-w-fit rounded-md md:rounded-lg",
+        "text-sm md:text-base py-1.5 md:py-2 min-w-fit rounded-md md:rounded-lg",
         icon && "flex items-center gap-1 md:gap-2",
         variant === "filled"
           ? "bg-primary hover:bg-[#3074f4] text-white"

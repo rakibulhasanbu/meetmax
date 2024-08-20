@@ -16,27 +16,13 @@ import AppUser from "@/components/ui/AppUser";
 import AppGroupPhoto from "@/components/ui/AppGroupPhoto";
 import { useState } from "react";
 import { cn } from "@/utils/cn";
-
-type TPost = {
-  post: {
-    comments: number;
-    share: number;
-    description: string;
-    postBy: {
-      name: string;
-      image: string;
-      role: string;
-    };
-    createdAt: string;
-    images: {
-      url: string;
-    }[];
-  };
-};
+import { TPost } from "@/types";
 
 const Post = ({
   post: { postBy, images, description, comments, share },
-}: TPost) => {
+}: {
+  post: TPost;
+}) => {
   const [like, setLike] = useState(false);
   return (
     <div className="p-5 rounded-xl bg-white">

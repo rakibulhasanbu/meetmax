@@ -1,14 +1,8 @@
-import ActiveUsers from "@/components/feed/ActiveUsers";
-import CreatePost from "@/components/feed/main-feed/CreatePost";
 import MainFeed from "@/components/feed/main-feed/MainFeed";
 import FeedRightEvents from "@/components/feed/right-side-feed/FeedRightEvents";
 import RightSIdebar from "@/components/feed/RightSIdebar";
 import Sidebar from "@/components/feed/Sidebar";
-import { posts } from "../../../data";
-import Post from "@/components/feed/main-feed/Post";
-import RecentEvent from "@/components/feed/right-side-feed/RecentEvent";
-import BirthDayCard from "@/components/feed/right-side-feed/BirthdayCard";
-import BottomMobileNavbar from "@/components/shared/BottomMobileNavbar";
+import MobileFeed from "@/components/feed/MobileFeed";
 
 const page = () => {
   return (
@@ -33,21 +27,8 @@ const page = () => {
           <RightSIdebar />
         </div>
       </div>
-      <div className="md:hidden bg-dark/5 space-y-2 pb-14">
-        <ActiveUsers />
 
-        <CreatePost />
-
-        <Post post={posts[0]} />
-
-        <RecentEvent />
-
-        <Post post={posts[1]} />
-
-        <BirthDayCard />
-
-        <BottomMobileNavbar />
-      </div>
+      <MobileFeed />
     </>
   );
 };
