@@ -2,9 +2,8 @@
 
 import { SubmitHandler, useForm } from "react-hook-form";
 import AppFormInput from "../ui/AppFormInput";
-import { FaRegUser } from "react-icons/fa6";
-import { FiMail } from "react-icons/fi";
-import { MdOutlineLock } from "react-icons/md";
+import { FiLock, FiMail } from "react-icons/fi";
+import { MdAlternateEmail, MdOutlineLock } from "react-icons/md";
 import AppButton from "../ui/AppButton";
 import Link from "next/link";
 import { useLoginMutation } from "@/redux/features/auth/authApi";
@@ -12,6 +11,7 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { useAppDispatch } from "@/redux/hook";
 import { setUser } from "@/redux/features/auth/authSlice";
+import SocialAuth from "./SocialAuth";
 
 interface FormData {
   name: string;
@@ -52,55 +52,54 @@ const SignInForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="md:max-w-[80%] space-y-5"
+      className="w-full font-medium space-y-3 lg:space-y-5"
     >
+      <SocialAuth />
       <AppFormInput
         name="email"
         type="email"
-        label="Your e-mail"
         register={register}
         required
-        icon={<FiMail />}
-        placeholder="Enter Your e-mail"
+        icon={<MdAlternateEmail />}
+        placeholder="your email"
         error={errors.email}
       />
+
       <AppFormInput
         name="password"
         type="password"
-        label="Password"
         register={register}
         required
-        icon={<MdOutlineLock />}
-        placeholder="at least 8 characters"
+        icon={<FiLock />}
+        placeholder="Enter Password"
         error={errors.password}
       />
-      <div className="flex gap-2 pb-8 pt-4">
-        <input
-          type="checkbox"
-          name="checkbox"
-          id=""
-          className="border-dark-grey h-fit mt-1 outline-none"
-        />
-        <p className="text-dark-grey font-light">Keep me logged in</p>
+      <div className="flex items-center justify-between px-2">
+        <div className="flex items-center gap-1">
+          <input type="checkbox" name="checkbox" id="Remember" />
+          <label className=" cursor-pointer" htmlFor="Remember">
+            Remember me
+          </label>
+        </div>
+        <Link
+          href={"/auth/forgot-password"}
+          className="hover:text-primary text-center font-medium"
+        >
+          Forgot password?
+        </Link>
       </div>
       <AppButton
         disabled={isLoading}
         type="submit"
         className="w-full py-3"
-        label="Log in"
+        label="Sign In"
       />
-      <p className="text-center">
-        Don&apos;t have an account?{" "}
+      <p className="text-center font-medium flex gap-3.5 justify-center pt-2">
+        Don&apos;t have any account?
         <Link href={"/auth/sign-up"} className="text-primary font-medium">
-          Sign up
+          Sign Up
         </Link>
       </p>
-      <Link
-        href={"/auth/forgot-password"}
-        className="text-primary text-center block w-fit mx-auto"
-      >
-        Forgot password?
-      </Link>
     </form>
   );
 };

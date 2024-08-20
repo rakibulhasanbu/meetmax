@@ -14,10 +14,10 @@ const AuthWrapper = ({
       <h1 className="text-3xl font-bold 2xl:text-4xl pb-1 leading-10 2xl:leading-[52px]">
         {title}
       </h1>
-      <p className="text-sm 2xl:text-base font-medium md:max-w-[70%] 2xl:max-w-[50%] pb-6 2xl:pb-9">
+      <p className="2xl:text-base font-medium  text-center max-w-[80%] 2xl:max-w-[50%] pb-6 2xl:pb-9">
         {subTitle}
       </p>
-      <div className="bg-white app-shadow md:w-2/5 p-5 md:p-10 rounded-2xl">
+      <div className="bg-white  app-shadow w-full md:w-2/5 p-5 md:p-10 rounded-2xl">
         {children}
       </div>
     </section>

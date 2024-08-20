@@ -68,7 +68,7 @@ const SignUpForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="w-full font-medium max-sm:space-y-3 space-y-2 2xl:space-y-5"
+      className="w-full font-medium space-y-3 2xl:space-y-5"
     >
       <SocialAuth />
       <AppFormInput
@@ -99,13 +99,13 @@ const SignUpForm = () => {
         placeholder="Create Password"
         error={errors.password}
       />
-      <div className="flex items-center gap-5 justify-between">
+      <div className="flex max-sm:flex-col items-center gap-3 md:gap-5 justify-between">
         <div className="relative w-full">
           <FiCalendar className="input-icon text-xl" />
           <input
             {...register("dateOfBirth")}
             type="date"
-            className="w-full input-box py-3"
+            className="w-full input-box md:py-3"
             placeholder="Date of Birth"
           />
           <p

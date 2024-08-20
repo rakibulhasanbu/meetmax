@@ -52,7 +52,9 @@ const AppButton = ({
       className={cn(
         "text-sm md:text-base min-w-fit rounded-md md:rounded-lg",
         icon && "flex items-center gap-1 md:gap-2",
-        variant === "filled" ? "" : "",
+        variant === "filled"
+          ? "bg-primary hover:bg-[#3074f4] text-white"
+          : "border border-primary/20 text-primary hover:bg-primary/20",
         className
       )}
       type={"button"}
