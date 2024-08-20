@@ -22,9 +22,9 @@ type TPost = {
     comments: number;
     share: number;
     description: string;
-    user: {
+    postBy: {
       name: string;
-      profileImg: string;
+      image: string;
       role: string;
     };
     createdAt: string;
@@ -35,13 +35,13 @@ type TPost = {
 };
 
 const Post = ({
-  post: { user, images, description, comments, share },
+  post: { postBy, images, description, comments, share },
 }: TPost) => {
   const [like, setLike] = useState(false);
   return (
     <div className="p-5 rounded-xl bg-white">
       <div className="flex items-center justify-between">
-        <AppUser user={user} />
+        <AppUser user={postBy} />
         <BsThreeDots className="text-2xl cursor-pointer" />
       </div>
       <p className="text-sm py-[18px]">{description}</p>
@@ -56,6 +56,7 @@ const Post = ({
         </p>
       </div>
 
+      {/* this is for like comment share  */}
       <div
         className={
           "border-t border-b border-dark/20 flex items-center justify-between py-2.5"
@@ -78,8 +79,9 @@ const Post = ({
         </button>
       </div>
 
+      {/* this is for write comment  */}
       <div className="flex items-center gap-4 pt-3">
-        <AppUser size="md" onlyImage user={user} />
+        <AppUser size="md" onlyImage user={postBy} />
 
         <div className="flex w-10/12 rounded-md bg-dark/5 px-4 py-2">
           <input

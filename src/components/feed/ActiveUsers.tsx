@@ -6,11 +6,16 @@ import { users } from "../../../data";
 import AppUser from "../ui/AppUser";
 import { useEffect, useRef, useState } from "react";
 import AnimationWrapper from "../ui/AnimationWrapper";
+import { useAppSelector } from "@/redux/hook";
+import { selectCurrentUser } from "@/redux/features/auth/authSlice";
+import { TTokenUser } from "@/types";
 
 const ActiveUsers = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [contentWidth, setContentWidth] = useState(0);
   const [containerWidth, setContainerWidth] = useState(0);
+
+  const user = useAppSelector(selectCurrentUser);
 
   useEffect(() => {
     const updateWidths = () => {
@@ -28,6 +33,8 @@ const ActiveUsers = () => {
     };
   }, []);
 
+  const totalUsers = [user && user, ...users];
+
   return (
     <div className="max-sm:bg-white max-sm:px-5 max-sm:py-4 md:py-[30px] w-full relative overflow-hidden">
       <motion.div
@@ -39,13 +46,13 @@ const ActiveUsers = () => {
         dragElastic={0.1}
         whileTap={{ cursor: "grabbing" }}
       >
-        {users.map((user, i) => (
+        {totalUsers.map((user, i) => (
           <AnimationWrapper key={i} transition={{ delay: 0.08 * i }}>
             <AppUser
               myProfile={i === 0 && true}
               activeUser
               size="md"
-              user={user}
+              user={user as TTokenUser}
             />
           </AnimationWrapper>
         ))}

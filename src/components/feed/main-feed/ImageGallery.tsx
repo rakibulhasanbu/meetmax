@@ -10,11 +10,11 @@ const ImageGallery = ({
     url: string;
   }[];
 }) => {
-  if (images.length === 0) return null;
+  if (images?.length === 0) return null;
 
   return (
     <>
-      {images.length === 2 ? (
+      {images?.length === 2 ? (
         <Image
           src={images[0].url}
           height={270}
@@ -23,7 +23,7 @@ const ImageGallery = ({
           alt="image"
         />
       ) : (
-        images.length === 3 && (
+        images?.length === 3 && (
           <div className="grid grid-cols-2 gap-3">
             <Image
               src={images[0].url}

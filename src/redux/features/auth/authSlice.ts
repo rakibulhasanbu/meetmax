@@ -5,7 +5,7 @@ import { TTokenUser } from "@/types";
 type TIState = {
   user: TTokenUser | null;
   accessToken: string | null;
-  theme: string;
+  tempToken: string | null;
 };
 
 const darkThemePreference = () =>
@@ -20,7 +20,7 @@ const initialState: TIState = {
     image: "",
   },
   accessToken: "",
-  theme: darkThemePreference() ? "dark" : "light",
+  tempToken: "",
 };
 
 const authSlice = createSlice({
@@ -37,8 +37,8 @@ const authSlice = createSlice({
       state.accessToken = null;
       state.user = null;
     },
-    setTheme: (state, action) => {
-      state.theme = action.payload;
+    setTempToken: (state, action) => {
+      state.tempToken = action.payload;
     },
     setUserProfileImage: (state, action) => {
       if (state.user) {
@@ -48,7 +48,7 @@ const authSlice = createSlice({
   },
 });
 
-export const { setUser, logOut, setTheme, setUserProfileImage } =
+export const { setUser, logOut, setTempToken, setUserProfileImage } =
   authSlice.actions;
 export default authSlice.reducer;
 

@@ -2,7 +2,6 @@
 
 import { SubmitHandler, useForm } from "react-hook-form";
 import AppFormInput from "../ui/AppFormInput";
-import { FiMail } from "react-icons/fi";
 import AppButton from "../ui/AppButton";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -25,22 +24,22 @@ const ForgotPassword = () => {
   } = useForm<FormData>();
   const router = useRouter();
   const dispatch = useAppDispatch();
+
   const [forgotPassword, { isLoading }] = useForgotPasswordMutation();
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     console.log(data);
-    toast.success("Forgot password code sent to your email account");
-    router.push("/auth/new-password");
-    // await forgotPassword(data.email)
-    //   .unwrap()
-    //   .then((res) => {
-    //     toast.success(res?.message);
-    //     router.push("/auth/reset-password");
-    //     dispatch(setUser({ user: { email: data.email } }));
-    //   })
-    //   .catch((res) => {
-    //     toast.error(res?.message);
-    //   });
+
+    await forgotPassword({ email: data.email })
+      .unwrap()
+      .then((res) => {
+        toast.success("Forgot password code sent to your email account");
+        router.push("/auth/new-password");
+        dispatch(setUser({ user: { email: data.email } }));
+      })
+      .catch((res) => {
+        toast.error(res?.message);
+      });
   };
 
   return (

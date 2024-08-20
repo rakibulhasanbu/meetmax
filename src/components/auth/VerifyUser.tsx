@@ -40,7 +40,6 @@ const VerifyUser = () => {
     await verifyUser({ token: data.code, email: user?.email })
       .unwrap()
       .then((res) => {
-        console.log(res);
         toast.success(res?.message);
         router.push("/auth/sign-in");
       })

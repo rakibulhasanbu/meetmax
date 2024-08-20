@@ -4,7 +4,7 @@ import { LuPlus } from "react-icons/lu";
 
 type TAppUser = {
   user: {
-    profileImg: string;
+    image: string;
     name: string;
     role?: string;
   };
@@ -31,7 +31,7 @@ const AppUser = ({
         width={50}
         height={50}
         alt="avatar"
-        src={user.profileImg}
+        src={user?.image}
         className={cn(
           "aspect-square rounded-full object-cover",
           size === "lg" && "size-8  md:size-[50px] md:min-w-[50px]",
@@ -40,10 +40,10 @@ const AppUser = ({
       />
       {!onlyImage && (
         <div className="">
-          <h3 className="font-medium">{user.name}</h3>
+          <h3 className="font-medium">{user?.name}</h3>
           {!onlyName && (
             <p className="text-dark/60 text-sm">
-              {createdAt ? createdAt : user.role}
+              {createdAt ? createdAt : user?.role}
             </p>
           )}
         </div>
@@ -56,7 +56,7 @@ const AppUser = ({
           width={50}
           height={50}
           alt="avatar"
-          src={user.profileImg}
+          src={user?.image}
           className={
             "aspect-square rounded-full pointer-events-none border-2 border-primary object-cover size-9  md:size-[50px]"
           }
@@ -70,10 +70,10 @@ const AppUser = ({
       {!onlyImage && (
         <div className="">
           <h3 className="font-medium max-sm:text-xs md:text-center">
-            {user.name.split(" ")[0]}
+            {user?.name.split(" ")[0]}
           </h3>
           {!onlyName && (
-            <p className="text-dark/60">{createdAt ? createdAt : user.role}</p>
+            <p className="text-dark/60">{createdAt ? createdAt : user?.role}</p>
           )}
         </div>
       )}

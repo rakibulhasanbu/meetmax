@@ -9,7 +9,7 @@ const LikedEvents = () => {
   const user = {
     name: "Radovan SkillArena",
     role: "Founder & CEO at Trophy",
-    profileImg: "https://randomuser.me/api/portraits/men/19.jpg",
+    image: "https://randomuser.me/api/portraits/men/19.jpg",
   };
   return (
     <div className="bg-white rounded-xl">

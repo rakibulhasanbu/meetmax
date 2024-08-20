@@ -4,20 +4,24 @@ import AppButton from "@/components/ui/AppButton";
 import AppDropDown from "@/components/ui/AppDropDown";
 import AppModal from "@/components/ui/AppModal";
 import AppUser from "@/components/ui/AppUser";
+import { selectCurrentUser } from "@/redux/features/auth/authSlice";
+import { useCreatePostMutation } from "@/redux/features/post/postApi";
+import { useAppSelector } from "@/redux/hook";
+import { TTokenUser } from "@/types";
 import { useState } from "react";
 import { IoImageOutline } from "react-icons/io5";
 import { LuVideo } from "react-icons/lu";
 import { RiUserSmileLine } from "react-icons/ri";
 import { RxCrossCircled } from "react-icons/rx";
+import { toast } from "react-toastify";
 
 const CreatePost = () => {
-  const user = {
-    profileImg: "/images/a.png",
-    name: "Saleh Ahmed",
-    role: "Admin",
-  };
-
   const [modalOpen, setModalOpen] = useState(false);
+  const [description, setDescription] = useState("");
+
+  const user = useAppSelector(selectCurrentUser);
+
+  const [createPost, { isLoading }] = useCreatePostMutation();
 
   const handleCloseModal = () => {
     setModalOpen(false);
@@ -29,11 +33,37 @@ const CreatePost = () => {
 
   const dropdownData = ["Friends", "Public"];
 
+  const handlePost = async () => {
+    if (description === "") {
+      toast.error("Please write post and try again", { toastId: 1 });
+    }
+
+    const submittedData = {
+      postBy: {
+        userId: user?.id,
+        name: user?.name,
+        image: user?.image,
+      },
+      description,
+    };
+
+    await createPost(submittedData)
+      .unwrap()
+      .then((res) => {
+        toast.success(res?.message);
+        setDescription("");
+        handleCloseModal();
+      })
+      .catch((res) => {
+        toast.error(res?.data?.message);
+      });
+  };
+
   return (
     <div>
       <div className="bg-white p-3 md:p-5 space-y-3 md:space-y-5 rounded-xl">
         <div className="flex items-center gap-4 pt-3">
-          <AppUser size="md" onlyImage user={user} />
+          <AppUser size="md" onlyImage user={user as TTokenUser} />
 
           <input
             onClick={handleOpenModal}
@@ -79,9 +109,10 @@ const CreatePost = () => {
           </div>
           <div className="flex gap-4 pt-3 px-7">
             <div className="">
-              <AppUser size="md" onlyImage user={user} />
+              <AppUser size="md" onlyImage user={user as TTokenUser} />
             </div>
             <textarea
+              onChange={(e) => setDescription(e.target.value)}
               className="outline-none w-full bg-dark/5 px-4 py-2 rounded-md resize-none"
               rows={6}
               placeholder="What’s happening?"
@@ -101,7 +132,12 @@ const CreatePost = () => {
               <RiUserSmileLine className="text-xl" />
               Feeling
             </button>
-            <AppButton className="w-fit px-5 py-1" label="Post" />
+            <AppButton
+              disabled={isLoading}
+              onClick={handlePost}
+              className="w-fit px-5 py-1"
+              label="Post"
+            />
           </div>
         </div>
       </AppModal>
