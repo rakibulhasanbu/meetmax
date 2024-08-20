@@ -20,7 +20,9 @@ const SocialAuth = () => {
           .unwrap()
           .then((res: any) => {
             console.log(res);
-            toast.success(res?.message || "Successfully registered.");
+            toast.success(res?.message || "Successfully registered.", {
+              toastId: 1,
+            });
             dispatch(
               setUser({
                 user: res.data.user,
@@ -30,7 +32,9 @@ const SocialAuth = () => {
             router.push("/");
           })
           .catch((res: any) => {
-            toast.error(res?.data?.message || "something went wrong");
+            toast.error(res?.data?.message || "something went wrong", {
+              toastId: 1,
+            });
           });
       })
       .catch((err) => {
