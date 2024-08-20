@@ -12,13 +12,19 @@ const RecentEvent = () => {
       seen: 8,
       users: [
         {
-          url: "https://randomuser.me/api/portraits/men/14.jpg",
+          commentBy: {
+            image: "https://randomuser.me/api/portraits/men/14.jpg",
+          },
         },
         {
-          url: "https://randomuser.me/api/portraits/men/17.jpg",
+          commentBy: {
+            image: "https://randomuser.me/api/portraits/men/17.jpg",
+          },
         },
         {
-          url: "https://randomuser.me/api/portraits/men/12.jpg",
+          commentBy: {
+            image: "https://randomuser.me/api/portraits/men/12.jpg",
+          },
         },
       ],
     },
@@ -30,17 +36,24 @@ const RecentEvent = () => {
       seen: 11,
       users: [
         {
-          url: "https://randomuser.me/api/portraits/men/18.jpg",
+          commentBy: {
+            image: "https://randomuser.me/api/portraits/men/18.jpg",
+          },
         },
         {
-          url: "https://randomuser.me/api/portraits/men/19.jpg",
+          commentBy: {
+            image: "https://randomuser.me/api/portraits/men/19.jpg",
+          },
         },
         {
-          url: "https://randomuser.me/api/portraits/women/20.jpg",
+          commentBy: {
+            image: "https://randomuser.me/api/portraits/men/20.jpg",
+          },
         },
       ],
     },
   ];
+
   return (
     <div className="bg-white rounded-xl">
       <h3 className="flex items-center justify-between px-5 py-3 border-b border-b-dark/20">
@@ -74,7 +87,7 @@ const RecentEvent = () => {
             <hr className="text-dark/20 my-2.5" />
             <div className="flex text-sm font-medium items-center justify-between">
               <span>{event.seen} seen</span>
-              <AppGroupPhoto images={event.users} />
+              <AppGroupPhoto comments={event.users} />
             </div>
           </AnimationWrapper>
         ))}
