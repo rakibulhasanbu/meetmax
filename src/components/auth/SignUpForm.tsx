@@ -117,7 +117,11 @@ const SignUpForm = () => {
               watch("dateOfBirth") && "text-dark"
             )}
           >
-            {watch("dateOfBirth") ? watch("dateOfBirth") : "Date of birth"}
+            {watch("dateOfBirth") ? (
+              <span className="max-sm:hidden">{watch("dateOfBirth")}</span>
+            ) : (
+              "Date of birth"
+            )}
           </p>
         </div>
 
