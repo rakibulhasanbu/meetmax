@@ -17,6 +17,16 @@ const nextConfig = {
         hostname: "cdn-icons-png.flaticon.com",
         pathname: "**",
       },
+      {
+        protocol: "https",
+        hostname: "i.ibb.co",
+        pathname: "**",
+      },
+      {
+        protocol: "http",
+        hostname: "res.cloudinary.com",
+        pathname: "**",
+      },
     ],
   },
 };

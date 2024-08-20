@@ -42,7 +42,7 @@ const AppModal = ({
             />
 
             <motion.div
-              className="fixed top-28 w-2/5 h-fit max-h-[50dvh] rounded-xl overflow-y-auto left-[16%] z-50 bg-white"
+              className="fixed top-28 w-2/5 h-fit max-h-[60dvh] rounded-xl overflow-y-auto left-[16%] z-50 bg-white"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}

@@ -6,6 +6,7 @@ export type TTokenUser = {
 };
 
 export interface TPost {
+  id: string;
   postBy: {
     userId: number;
     name: string;

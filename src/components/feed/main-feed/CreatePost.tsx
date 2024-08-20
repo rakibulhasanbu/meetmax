@@ -6,9 +6,14 @@ import AppDropDown from "@/components/ui/AppDropDown";
 import AppModal from "@/components/ui/AppModal";
 import AppUser from "@/components/ui/AppUser";
 import { selectCurrentUser } from "@/redux/features/auth/authSlice";
-import { useCreatePostMutation } from "@/redux/features/post/postApi";
+import {
+  useCreatePostMutation,
+  useUploadImageMutation,
+} from "@/redux/features/post/postApi";
 import { useAppSelector } from "@/redux/hook";
 import { TTokenUser } from "@/types";
+import { uploadImage } from "@/utils/uploadImage";
+import Image from "next/image";
 import { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa6";
 import { IoImageOutline } from "react-icons/io5";
@@ -20,10 +25,12 @@ import { toast } from "react-toastify";
 const CreatePost = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [description, setDescription] = useState("");
-
+  const [images, setImages] = useState<{ url: string }[]>([]);
+  const [img, setImg] = useState("");
   const user = useAppSelector(selectCurrentUser);
 
   const [createPost, { isLoading }] = useCreatePostMutation();
+  const [uploadImg] = useUploadImageMutation();
 
   const handleCloseModal = () => {
     setModalOpen(false);
@@ -34,6 +41,42 @@ const CreatePost = () => {
   };
 
   const dropdownData = ["Friends", "Public"];
+
+  const handleFileChange = async (e: any) => {
+    const maxSizeInBytes = 2 * 1024 * 1024;
+    const file = e.target.files?.[0];
+
+    if (file?.size && file.size > maxSizeInBytes) {
+      return toast.error("Your file was more than 4 Megabyte!", {
+        toastId: 1,
+      });
+    }
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        if (reader.readyState === 2) {
+          const loadingToast = toast.loading("Uploading...🚀");
+          uploadImg({ img: reader?.result })
+            .unwrap()
+            .then((res: any) => {
+              setImages([...images, { url: res.data?.url }]);
+              toast.dismiss(loadingToast);
+              toast.success(res?.message || "Image update Successful 👍");
+            })
+            .catch((res: any) => {
+              toast.dismiss(loadingToast);
+              toast.error(res?.data?.message || "something went wrong");
+            });
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleRemoveImage = async (url: string) => {
+    const index = images.findIndex((img) => img.url === url);
+    setImages(images.filter((_, i) => i !== index));
+  };
 
   const handlePost = async () => {
     if (description === "") {
@@ -47,6 +90,7 @@ const CreatePost = () => {
         image: user?.image,
       },
       description,
+      images,
     };
 
     await createPost(submittedData)
@@ -54,6 +98,7 @@ const CreatePost = () => {
       .then((res) => {
         toast.success(res?.message);
         setDescription("");
+        setImages([]);
         handleCloseModal();
       })
       .catch((res) => {
@@ -130,16 +175,50 @@ const CreatePost = () => {
                 placeholder="What’s happening?"
               />
             </div>
+            {images.length > 0 && (
+              <div className="pl-20 flex gap-2 flex-wrap">
+                {images.map((image, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center gap-2 relative w-fit"
+                  >
+                    <Image
+                      width={112}
+                      height={112}
+                      src={image.url}
+                      alt=""
+                      className="size-28 rounded-md"
+                    />
+                    <RxCrossCircled
+                      onClick={() => handleRemoveImage(image.url)}
+                      className="text-xl absolute top-1 right-1 text-red cursor-pointer"
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
 
             <div className="flex items-center justify-between px-7 pb-7">
               <button className="flex font-medium items-center gap-2 min-w-fit">
                 <LuVideo className="text-xl" />
                 Live Video
               </button>
-              <button className="flex font-medium items-center gap-2 min-w-fit">
+              <label
+                htmlFor="uploadBanner"
+                className="flex font-medium items-center gap-2 min-w-fit cursor-pointer"
+              >
                 <IoImageOutline className="text-xl" />
                 Photo/Video
-              </button>
+                <input
+                  id="uploadBanner"
+                  type="file"
+                  accept=".png, .jpg, .jpeg"
+                  hidden
+                  // disabled={loading}
+                  onChange={handleFileChange}
+                />
+              </label>
+
               <button className="flex font-medium items-center gap-2 min-w-fit">
                 <RiUserSmileLine className="text-xl" />
                 Feeling
@@ -181,15 +260,49 @@ const CreatePost = () => {
                 />
               </div>
 
+              {images.length > 0 && (
+                <div className="pl-2 flex gap-2 flex-wrap">
+                  {images.map((image, i) => (
+                    <div
+                      key={i}
+                      className="flex items-center gap-2 relative w-fit"
+                    >
+                      <Image
+                        width={80}
+                        height={80}
+                        src={image.url}
+                        alt=""
+                        className="size-16 rounded-md"
+                      />
+                      <RxCrossCircled
+                        onClick={() => handleRemoveImage(image.url)}
+                        className="text-xl absolute top-1 right-1 text-red cursor-pointer"
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
+
               <div className="flex flex-col gap-3 px-4 pb-7">
                 <button className="flex font-medium items-center gap-2 min-w-fit">
                   <LuVideo className="text-xl" />
                   Live Video
                 </button>
-                <button className="flex font-medium items-center gap-2 min-w-fit">
+                <label
+                  htmlFor="uploadBanner"
+                  className="flex font-medium items-center gap-2 min-w-fit cursor-pointer"
+                >
                   <IoImageOutline className="text-xl" />
                   Photo/Video
-                </button>
+                  <input
+                    id="uploadBanner"
+                    type="file"
+                    accept=".png, .jpg, .jpeg"
+                    hidden
+                    // disabled={loading}
+                    onChange={handleFileChange}
+                  />
+                </label>
                 <button className="flex font-medium items-center gap-2 min-w-fit">
                   <RiUserSmileLine className="text-xl" />
                   Feeling
