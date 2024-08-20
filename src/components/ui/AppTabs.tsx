@@ -14,7 +14,7 @@ const AppTabs = ({ tabs, activeTab, setActiveTab }: TAppTabs) => {
   return (
     <AnimatePresence>
       <div className={`flex gap-2 md:gap-8 border-b border-b-[#EAECEE]`}>
-        {tabs.map((tab) => (
+        {tabs?.map((tab) => (
           <button
             key={tab.label}
             onClick={() => setActiveTab(tab.value ? tab.value : tab.label)}

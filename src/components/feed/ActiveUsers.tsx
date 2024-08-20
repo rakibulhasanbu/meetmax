@@ -46,7 +46,7 @@ const ActiveUsers = () => {
         dragElastic={0.1}
         whileTap={{ cursor: "grabbing" }}
       >
-        {totalUsers.map((user, i) => (
+        {totalUsers?.map((user, i) => (
           <AnimationWrapper key={i} transition={{ delay: 0.08 * i }}>
             <AppUser
               myProfile={i === 0 && true}

@@ -46,7 +46,7 @@ const MobileFeed = () => {
         <EmptyPost />
       ) : (
         slicedArray &&
-        slicedArray.map((post: any, i: number) => (
+        slicedArray?.map((post: any, i: number) => (
           <AnimationWrapper key={i} transition={{ delay: i * 0.08 }}>
             <Post post={post} />
           </AnimationWrapper>

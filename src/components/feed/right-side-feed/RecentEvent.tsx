@@ -61,7 +61,7 @@ const RecentEvent = () => {
         <BsThreeDots className="text-2xl cursor-pointer" />
       </h3>
       <div className="p-5 space-y-5">
-        {events.map((event, i) => (
+        {events?.map((event, i) => (
           <AnimationWrapper
             key={i}
             transition={{ delay: i * 0.08 }}

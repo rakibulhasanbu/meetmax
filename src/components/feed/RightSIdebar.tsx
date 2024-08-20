@@ -17,7 +17,7 @@ const RightSIdebar = () => {
         <BsThreeDots className="text-2xl cursor-pointer" />
       </div>
       <div className="space-y-5 overflow-y-auto h-[calc(100vh-314px)] pr-2 pb-4">
-        {users.map((user, i) => (
+        {users?.map((user, i) => (
           <AnimationWrapper
             transition={{ delay: i * 0.08 }}
             key={i}

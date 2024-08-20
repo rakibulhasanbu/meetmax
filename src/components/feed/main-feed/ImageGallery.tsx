@@ -72,7 +72,7 @@ const ImageGallery = ({
   } else {
     return (
       <div className="flex flex-wrap gap-3">
-        {images.map((img, i) => (
+        {images?.map((img, i) => (
           <Image
             key={i}
             src={img.url}

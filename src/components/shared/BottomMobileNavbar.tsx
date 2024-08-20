@@ -39,7 +39,7 @@ const BottomMobileNavbar = () => {
   ];
   return (
     <div className="fixed bottom-0 w-full bg-white pt-2.5 px-4 flex justify-between">
-      {navLinks.map((link, index) => (
+      {navLinks?.map((link, index) => (
         <Link
           href={link.href}
           key={index}

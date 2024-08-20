@@ -177,7 +177,7 @@ const CreatePost = () => {
             </div>
             {images.length > 0 && (
               <div className="pl-20 flex gap-2 flex-wrap">
-                {images.map((image, i) => (
+                {images?.map((image, i) => (
                   <div
                     key={i}
                     className="flex items-center gap-2 relative w-fit"
@@ -262,7 +262,7 @@ const CreatePost = () => {
 
               {images.length > 0 && (
                 <div className="pl-2 flex gap-2 flex-wrap">
-                  {images.map((image, i) => (
+                  {images?.map((image, i) => (
                     <div
                       key={i}
                       className="flex items-center gap-2 relative w-fit"

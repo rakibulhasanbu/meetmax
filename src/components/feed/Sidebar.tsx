@@ -59,7 +59,7 @@ const Sidebar = () => {
   ];
   return (
     <div className="py-2.5 px-5 space-y-2.5">
-      {navLinks.map((link, i) => (
+      {navLinks?.map((link, i) => (
         <AnimationWrapper key={link.href} transition={{ delay: i * 0.08 }}>
           {link.label === "Logout" ? (
             <button
