@@ -48,15 +48,15 @@ const SocialAuth = () => {
         <button
           onClick={handleGoogleLogin}
           type="button"
-          className="bg-dark/5 w-full flex items-center justify-center rounded-lg gap-3 md:gap-5 py-3.5 font-medium "
+          className="bg-dark/5 w-full flex items-center justify-center rounded-lg gap-2 md:gap-5 py-3.5 font-medium max-sm:text-sm"
         >
-          <IoLogoGoogle className="text-lg" /> Log in with Google
+          <IoLogoGoogle className="md:text-lg" /> Log in with Google
         </button>
         <button
           type="button"
-          className="bg-dark/5 w-full flex items-center justify-center rounded-lg gap-3 md:gap-5 py-3.5 font-medium "
+          className="bg-dark/5 w-full flex items-center justify-center rounded-lg gap-2 md:gap-5 py-3.5 font-medium  max-sm:text-sm"
         >
-          <FaApple className="text-lg" /> Log in with Apple
+          <FaApple className="md:text-lg" /> Log in with Apple
         </button>
       </div>
       <div className="flex items-center gap-3 md:gap-5">
