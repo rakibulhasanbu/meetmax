@@ -2,8 +2,8 @@
 
 import { SubmitHandler, useForm } from "react-hook-form";
 import AppFormInput from "../ui/AppFormInput";
-import { FiLock, FiMail } from "react-icons/fi";
-import { MdAlternateEmail, MdOutlineLock } from "react-icons/md";
+import { FiLock } from "react-icons/fi";
+import { MdAlternateEmail } from "react-icons/md";
 import AppButton from "../ui/AppButton";
 import Link from "next/link";
 import { useLoginMutation } from "@/redux/features/auth/authApi";
@@ -38,14 +38,10 @@ const SignInForm = () => {
         dispatch(
           setUser({ user: res.data.user, accessToken: res.data.accessToken })
         );
-        if (res?.data?.user?.role === "admin") {
-          router.push("/admin-dashboard");
-        } else {
-          router.push("/dashboard");
-        }
+        router.push("/");
       })
       .catch((res) => {
-        toast.error(res?.message);
+        toast.error(res?.data?.message);
       });
   };
 

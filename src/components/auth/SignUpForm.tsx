@@ -43,20 +43,23 @@ const SignUpForm = () => {
   const [userSingUp, { isLoading }] = useSignupUserMutation();
 
   const dispatch = useAppDispatch();
+
   const onSubmit: SubmitHandler<FormData> = async (data) => {
-    console.log(data);
-    // await userSingUp(data)
-    //   .unwrap()
-    //   .then((res) => {
-    //     toast.success(res?.message);
-    //     dispatch(
-    //       setUser({ user: res.data.user, accessToken: res.data.accessToken })
-    //     );
-    //     router.push("/");
-    //   })
-    //   .catch((res) => {
-    //     toast.error(res?.message);
-    //   });
+    await userSingUp(data)
+      .unwrap()
+      .then((res) => {
+        toast.success(res?.message);
+        dispatch(setUser({ user: res.data }));
+
+        if (res?.data?.emailVerified) {
+          router.push("/");
+        } else {
+          router.push(`/auth/verify-user`);
+        }
+      })
+      .catch((res) => {
+        toast.error(res?.message);
+      });
   };
 
   useEffect(() => {

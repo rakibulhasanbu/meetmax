@@ -17,8 +17,7 @@ const initialState: TIState = {
     email: "",
     name: "",
     id: "",
-    profileImg: "",
-    role: "",
+    image: "",
   },
   accessToken: "",
   theme: darkThemePreference() ? "dark" : "light",
@@ -43,7 +42,7 @@ const authSlice = createSlice({
     },
     setUserProfileImage: (state, action) => {
       if (state.user) {
-        state.user.profileImg = action.payload;
+        state.user.image = action.payload;
       }
     },
   },

@@ -9,9 +9,12 @@ import { LuGlobe2, LuUsers } from "react-icons/lu";
 import { RiChatSmileLine, RiNotification3Line } from "react-icons/ri";
 import { RxDashboard } from "react-icons/rx";
 import AnimationWrapper from "../ui/AnimationWrapper";
+import { useAppDispatch } from "@/redux/hook";
+import { logOut } from "@/redux/features/auth/authSlice";
 
 const Sidebar = () => {
   const pathname = usePathname();
+  const dispatch = useAppDispatch();
   const navLinks = [
     {
       href: "/",
@@ -58,16 +61,29 @@ const Sidebar = () => {
     <div className="py-2.5 px-5 space-y-2.5">
       {navLinks.map((link, i) => (
         <AnimationWrapper key={link.href} transition={{ delay: i * 0.08 }}>
-          <Link
-            href={link.href}
-            className={cn(
-              "flex items-center gap-5 rounded-lg text-dark hover:text-white font-medium px-5 py-3.5 hover:bg-dark",
-              pathname === link.href && "bg-dark text-white"
-            )}
-          >
-            <span className="text-lg">{link.icon}</span>
-            <span>{link.label}</span>
-          </Link>
+          {link.label === "Logout" ? (
+            <button
+              onClick={() => dispatch(logOut())}
+              className={cn(
+                "flex w-full items-center gap-5 rounded-lg text-dark hover:text-white font-medium px-5 py-3.5 hover:bg-dark",
+                pathname === link.href && "bg-dark text-white"
+              )}
+            >
+              <span className="text-lg">{link.icon}</span>
+              <span>{link.label}</span>
+            </button>
+          ) : (
+            <Link
+              href={link.href}
+              className={cn(
+                "flex items-center gap-5 rounded-lg text-dark hover:text-white font-medium px-5 py-3.5 hover:bg-dark",
+                pathname === link.href && "bg-dark text-white"
+              )}
+            >
+              <span className="text-lg">{link.icon}</span>
+              <span>{link.label}</span>
+            </Link>
+          )}
         </AnimationWrapper>
       ))}
     </div>

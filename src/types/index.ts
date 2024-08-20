@@ -37,8 +37,7 @@ export type TTokenUser = {
   email: string;
   name: string;
   id: string;
-  profileImg: string;
-  role: string;
+  image: string;
 };
 
 export interface TFlat {
